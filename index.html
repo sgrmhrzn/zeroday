@@ -11,7 +11,11 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/buttons.dataTables.min.css">
-
+    <style type="text/css">
+        #tbl a{
+            color: inherit;
+        }
+    </style>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -174,7 +178,7 @@
                     
                     <div class="col-sm-7">
                         <a class="btn btn-primary" id="show">Search</a>
-                        <a class="btn btn-warning" id="hide">Clear</a>
+                        <a class="btn btn-warning" id="hide">Cancel</a>
                     </div>
                 </div>
             </form>         
@@ -183,9 +187,14 @@
     </div>   
     </div>
 <div class="container" style="margin-top: 80px;min-height: 500px">
-    <button class="btn btn-success" onclick="showDiv();">Advance Search</button>
-    
-  	<div class="row" id="searchResults" style="display: none;">
+    <div class="row">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-2" style="margin: auto;">
+            <button style="height: 60px;width: 120px;margin:auto;font-size: 20px" class="btn btn-success" onclick="showDiv();"><i class="glyphicon glyphicon-search"></i> Search</button>
+        </div>
+    </div>
+        
+  	<div class="row" id="searchResults" style="display: none;margin:20px;padding-top:20px;border-top: thin solid lightgray">
 			  <div class="col-sm-12" style="padding: 10px;">
 			    <h3 style="margin-top: 0px">All advisee - Fall 2017 (Aug 22, 2017 to December 17, 2017)</h3>
 			  </div>
@@ -203,7 +212,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>Tiger Nixon</td>
+                <td>Tiger Nixon</a></td>
                 <td>System Architect</td>
                 <td>Edinburgh</td>
                 <td>61</td>
@@ -235,12 +244,12 @@
                 <td>$433,060</td>
             </tr>
             <tr>
-                <td>Airi Satou</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>33</td>
-                <td>2008/11/28</td>
-                <td>$162,700</td>
+                <td><a href="profile.html">Airi Satou</a></td>
+                <td><a href="#">Accountant</a></td>
+                <td><a href="#">Tokyo</a></td>
+                <td><a href="#">33</a></td>
+                <td><a href="#">2008/11/28</a></td>
+                <td><a href="#">$162,700</a></td>
             </tr>
             <tr>
                 <td>Brielle Williamson</td>
@@ -728,7 +737,7 @@ function hideDiv() {
     $("#advance").hide();
 }
 $("#hide").click(function(){
-    $("#searchResults").hide();
+    /*$("#searchResults").hide();*/
     hideDiv();
 });
 

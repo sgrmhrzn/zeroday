@@ -64,7 +64,7 @@
 						</div>
 						<div col-md-9>
 							<p>
-								<b>Ram Hari Sharma</b>
+								<b>Airi Satou</b>
 								</br>
 								ABC University, Address
 								</br>
@@ -138,10 +138,10 @@
 			    			</tbody>
 			    		</table>
 
-	  				<button class="btn btn-success">Use Predictor</button>
+	  				<button class="btn btn-success" id="predict">Use Predictor</button>
 	  			</div>
 
-	  			<div class="col-md-6" style="vertical-align: middle;">
+	  			<div id="prediction" class="col-md-6" style="display: none;">
 	  				<table class="table table-striped table-bordered">
 			    			<thead style="background-color: #6aa5d8">
 			    				<tr>
@@ -159,13 +159,15 @@
 			    			</tfoot>
 			    			<tbody>
 			    				<tr>
-			    					<td><span id="test">ENG 101</span>
+			    				 
+    
+			    					<td><label class="control-label"> ENG 101</label><input style="display: none;" type="text" class="edit-input form-control" value="ENG 101" />
 			    					</td>
 			    					<td>A-
 			    					</td>
 			    					<td>
-			    						<a class="btn btn-sm btn-success" onclick="edit();"><i class="glyphicon glyphicon-pencil"></i></a>
-			    						<a class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+			    						<a class="btn btn-sm btn-success edit"><i class="glyphicon glyphicon-pencil"></i></a>
+			    						<a class="btn btn-sm btn-danger cancel"><i class="glyphicon glyphicon-remove"></i></a>
 			    					</td>
 			    				</tr>
 			    				<tr>
@@ -268,6 +270,7 @@
     <script src="js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+$(document).ready(function() {
 function edit() {
     document.body.removeChild(this);
     var input = document.createElement('input');
@@ -276,6 +279,27 @@ function edit() {
     document.body.appendChild(input);
     input.select();
 }
+
+$('#predict').click(function () {
+	$("#prediction").toggle();
+})
+
+ $('a.edit').click(function () {
+        var dad = $(this).parent().parent();
+        dad.find('label').hide();
+        dad.find('input[type="text"]').show().focus();
+    });
+    
+    $('input[type=text]').focusout(function() {
+        var dad = $(this).parent();
+        $(this).hide();
+        dad.find('label').show();
+    });
+})
+
+    $('.cancel').click(function(){
+       $(this).parent().parent().remove(); //Deleting the Row (tr)
+	})
 	/*
  * Play with this code and it'll update in the panel opposite.
  *
